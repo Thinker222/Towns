@@ -28,4 +28,3 @@ For the purposes of time, we think of time in units of days.
 Tick
 One unit of time passes. If an actor is at a town, they access the world and start moving to another town. If they are on their way to a town, they keep moving to that town. 
 If they arrive at the town, they buy and sell things, and their movement ends for that turn. 
-
