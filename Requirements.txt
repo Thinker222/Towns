@@ -1,0 +1,31 @@
+Authors: 
+Eric Schneider 
+Julian Lott
+Purpose:
+Economic Sim is a command line tool for dungeons and dragons to simulate the day to day transportation, buying, and selling of goods in various towns. 
+The towns shall be represented on a weighted directed graph. The weights between each town shall be calculated by a combination of euclidean distance
+and user added penalties such as having a curvy, mountainous, clear, forested, etc route. 
+
+The graph shall represented by a list of lists of nodes. 
+
+Each town shall be represented as populations that prodcued, consume, buy, and sell depending on needs. A baseline
+definition for the needs of a town shall be defined, but a specific town can have modifiers for demands to a specific good.
+Additionally, "high roller" goods can be bought and sold on a one time basis (i.e a magic sword) Aside from high roller goods, 
+the needs of a town should never be stored but should always be derived based off of the current context. Each town shall have a number id, 
+and will be stored in a static towns dictionary that uses integers as keys. A static id shall be kept on hand. 
+
+The goods shall be respresented using a goods structure conaining a description of the goods, decay rates, etc. Each good will not have a class; 
+rather, the details of each good will be stored in json that can be instantiated as a specific good class. 
+etc.
+
+The actors shall be represented by their carrying capacity (which shall be derived from their number of horses and people). Additionally, functions will be 
+exposed from the map using djikstra's algorithm that will allow the actors to decide what to sell and where. After getting a table using djikstra's algorithm, 
+functionality will also be exposed to adjust the weights of each town based off the goods that expect to be able to buy and or sell per town.
+
+Time 
+For the purposes of time, we think of time in units of days. 
+
+Tick
+One unit of time passes. If an actor is at a town, they access the world and start moving to another town. If they are on their way to a town, they keep moving to that town. 
+If they arrive at the town, they buy and sell things, and their movement ends for that turn. 
+
