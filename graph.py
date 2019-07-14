@@ -1,12 +1,11 @@
-
-# Graph represent a series of nodes as a graph. 
+# Graph represent a series of nodes as a graph.
 # The weights are represented by a dictionary. Each entry in the dictionary will be a node.
 # (The actual weights for each node are stored in the node class to avoid a weird data structure in the weights dictionary)
 
-class Graph: 
+class Graph:
     def __init__(self):
         self.__weights = {}
-    
+
     # Get a djiskstra table so actors can make decisions
     def getDjikstraTable(self):
         return None
@@ -16,9 +15,10 @@ class Graph:
     # Then you set a weight going from one id to the other and vice versa. 
     # Remember, the graph is not directed
     def setWeight(self, id1, id2):
-        return None 
-    
-    # Add a node to the weights dictionary
+        return None
+
+        # Add a node to the weights dictionary
+
     def addNode(self, node):
         return None
 
@@ -29,13 +29,15 @@ class Graph:
 
     # Get
     def getNode(self, id):
-        return None 
+        return None
+
+    # Node represents a single nod in a graph
 
 
-# Node represents a single nod in a graph
 class Node:
-    currentId = 0 
-    def __init__(self, x = 0, y = 0):
+    currentId = 0
+
+    def __init__(self, x=0, y=0):
         self.id = Node.currentId
         self.coords = (x, y)
         self.weights = []
@@ -44,4 +46,3 @@ class Node:
     # Estimates the weight from another node 
     def estimateWeight(self, node):
         return None
-
