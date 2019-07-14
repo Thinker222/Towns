@@ -16,13 +16,10 @@ class Graph:
         table = np.zeros(shape=(dim, dim))
         table = np.subtract(table, 1)
         unFinishedIds = list(self.__nodes.keys())
-        finishedIds = {}
+        unFinishedIds.remove(node.id)
+        finishedIds = []
         while len(unFinishedIds) != 0:
             bestWeight = unFinishedIds[0]
-
-
-
-
         return None
 
     # Set a weight between two nodes. 
