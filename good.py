@@ -8,10 +8,10 @@ class Good:
 
     # Initializes the function
     def __init__(name, kg_per_unit, value, decay_rate):
-        this.__name 
-        this.__kg_per_unit = kg_per_unit
-        this.__value = value
-        this.__decay_rate = decay_rate
+        self.__name 
+        self.__kg_per_unit = kg_per_unit
+        self.__value = value
+        self.__decay_rate = decay_rate
         Good.goods[this.__name] = this
     
     # Gets the decay for an individual day
