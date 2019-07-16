@@ -1,7 +1,7 @@
 
 import math
 import numpy as np
-
+import sys
 # Graph represent a series of nodes as a graph.
 # Graph represent a series of nodes as a graph.
 # The weights are represented by a dictionary. Each entry in the dictionary will be a node.
@@ -12,16 +12,32 @@ class Graph:
         self.__nodes = {}
     # Get a djiskstra table so actors can make decisions
     def getDjikstraTable(self, id):
-        node = self.__nodes[id]
-        dim = len(list(self.__nodes.keys())) - 1
-        table = np.zeros(shape=(dim, dim))
-        table = np.subtract(table, 1)
-        unFinishedIds = list(self.__nodes.keys())
-        unFinishedIds.remove(node.id)
-        finishedIds = []
-        while len(unFinishedIds) != 0:
-            bestWeight = unFinishedIds[0]
-        return None
+        q = list(self.__nodes.keys())
+        dist = {}
+        prev = {}
+        for node in self.__nodes:
+            dist[node] = sys.maxsize
+            prev[node] = sys.maxsize
+        dist[id] = 0
+        prev[id] = 0
+        while len(q) != 0:
+            remove = self.min_dist(q, dist)
+            q.remove(remove)
+            for weight in list(self.__nodes[remove].weights.keys()):
+                if self.__nodes[remove].weights[weight] + dist[remove] < dist[weight] :
+                    dist[weight] = self.__nodes[remove].weights[weight] + dist[remove]
+                    prev[weight] = remove
+        return prev
+
+    def min_dist(self, q, dist):
+        min = q[0]
+        minDist = dist[min]
+
+        for node in q:
+            if dist[node] < minDist:
+                minDist = dist[node]
+                min = node
+        return min
 
     # Set a weight between two nodes. 
     # First you delete any existing weights between the two nodes. 
@@ -31,6 +47,9 @@ class Graph:
         self.__nodes[id].weights[id2] = val
         self.__nodes[id2].weights[id] = val
 
+
+    def getWeight(self, id, id2):
+        return  self.__nodes[id].weights[id2]
         # Add a node to the weights dictionary
 
     def addNode(self, node):
@@ -44,6 +63,10 @@ class Graph:
     # Get
     def getNode(self, id):
         return self.__nodes[id]
+
+    def printweights(self):
+        for node in self.__nodes:
+            print(self.__nodes[node].weights)
 
 class Node:
     currentId = 0
